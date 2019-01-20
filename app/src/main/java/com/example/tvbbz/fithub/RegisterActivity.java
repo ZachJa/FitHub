@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText name, password, address, email, fcid;
+    private EditText name, password, address, email;
     private Button registerbutton;
     private TextView userlogin;
     private FirebaseAuth firebaseAuth;
@@ -75,7 +75,6 @@ public class RegisterActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwordinput);
         address = (EditText) findViewById(R.id.addressinput);
         email = (EditText) findViewById(R.id.emailinput);
-        fcid = (EditText) findViewById(R.id.fcidinput);
         registerbutton = (Button) findViewById(R.id.signupbutton);
         userlogin = (TextView) findViewById(R.id.loginfromregister);
 
@@ -90,9 +89,9 @@ public class RegisterActivity extends AppCompatActivity {
         String namecheck = name.getText().toString();
         String passwordcheck = password.getText().toString();
         String emailcheck = email.getText().toString();
-        String fcidcheck = fcid.getText().toString();
 
-        if(namecheck.isEmpty() || passwordcheck.isEmpty() || emailcheck.isEmpty() || fcidcheck.isEmpty()){
+
+        if(namecheck.isEmpty() || passwordcheck.isEmpty() || emailcheck.isEmpty()){
 
             Toast.makeText(this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
         }else{

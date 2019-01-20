@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.tvbbz.fithub.data.model.GeneralUpdate;
+import com.example.tvbbz.fithub.data.model.GymCapacity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -16,6 +17,9 @@ public class UpdateStaffActivity extends AppCompatActivity{
 
     private Button genupdatebutton;
     private EditText genupdate;
+    private EditText capacity;
+    private Button capacitybutton;
+
 
     private DatabaseReference mDatabase;
 
@@ -29,6 +33,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
 // ...
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        //Updating Gym Information
+
         genupdatebutton = findViewById(R.id.genupdatebutton);
         genupdate = findViewById(R.id.genupdate);
 
@@ -39,7 +45,27 @@ public class UpdateStaffActivity extends AppCompatActivity{
             }
         });
 
+        //Updating Gym Capacity
 
+        capacity = findViewById(R.id.gymcapacity);
+        capacitybutton = findViewById(R.id.gymcapacitybutton);
+
+        capacitybutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gymcapacity(capacity.getText().toString());
+            }
+        });
+
+
+    }
+
+    protected void gymcapacity(String updatecapacity)
+    {
+        GymCapacity capacity = new GymCapacity();
+        capacity.setCapacity(updatecapacity);
+
+        mDatabase.child("capacity").setValue(capacity);
     }
 
     protected void generalupdate(String updatetext)
@@ -47,7 +73,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
         GeneralUpdate update = new GeneralUpdate();
         update.setUpdate(updatetext);
 
-        mDatabase.child("updates").setValue(update);    }
+        mDatabase.child("updates").setValue(update);
+    }
 
 
 }
