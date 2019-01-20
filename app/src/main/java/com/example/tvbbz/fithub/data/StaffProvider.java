@@ -7,7 +7,7 @@ public class StaffProvider {
 
     public static boolean isStaffMember(String email){
         List<String> members = new ArrayList<>();
-        members.add("joel@getnobi.com");
+        members.add("zacharyparch@yahoo.com");
 
         for(String member:members){
             if(member.equals(email)){
