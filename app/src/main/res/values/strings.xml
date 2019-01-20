@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FitHub</string>
+    <array name="equiptment">
+        <item>Equiptment</item>
+
+    </array>
+
+
+</resources>
