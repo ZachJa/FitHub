@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.tvbbz.fithub.data.model.GeneralUpdate;
 import com.example.tvbbz.fithub.data.model.GymCapacity;
@@ -51,7 +52,6 @@ public class UpdateStaffActivity extends AppCompatActivity{
         });
 
         //Updating Gym Capacity
-
         capacity = findViewById(R.id.gymcapacity);
         capacitybutton = findViewById(R.id.gymcapacitybutton);
 
@@ -59,6 +59,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 gymcapacity(capacity.getText().toString());
+                Toast.makeText(UpdateStaffActivity.this,"Update Successful",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UpdateStaffActivity.this, StaffActivity.class));
             }
         });
 
