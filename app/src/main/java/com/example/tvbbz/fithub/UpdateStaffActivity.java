@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.example.tvbbz.fithub.data.model.GeneralUpdate;
 import com.example.tvbbz.fithub.data.model.GymCapacity;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,8 +21,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
     private EditText capacity;
     private Button capacitybutton;
 
-
     private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseupdate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
 
 // ...
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabaseupdate = FirebaseDatabase.getInstance().getReference("updates");
+
 
         //Updating Gym Information
 
@@ -42,6 +45,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                generalupdate(genupdate.getText().toString());
+
+
             }
         });
 
@@ -70,10 +75,12 @@ public class UpdateStaffActivity extends AppCompatActivity{
 
     protected void generalupdate(String updatetext)
     {
-        GeneralUpdate update = new GeneralUpdate();
-        update.setUpdate(updatetext);
+        /*GeneralUpdate update = new GeneralUpdate();
+        update.setUpdate(updatetext);*/
 
-        mDatabase.child("updates").setValue(update);
+        mDatabaseupdate.push().setValue(updatetext);
+
+      /*mDatabaseupdate.child("update").setValue(update);*/
     }
 
 
