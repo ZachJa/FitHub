@@ -6,28 +6,39 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tvbbz.fithub.data.model.GymCapacity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class StaffActivity extends AppCompatActivity{
 
     private Button update;
     private Button signoutbutton;
     private TextView mcapacity;
+    private ListView mupdates;
+
+    private ArrayList<String>allupdates = new ArrayList<>();
 
     private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseupdates;
 
 
     @Override
@@ -47,6 +58,42 @@ public class StaffActivity extends AppCompatActivity{
 
                 String value = dataSnapshot.getValue(String.class);
                 mcapacity.setText(value);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //View Gym Updates
+        mupdates = (ListView) findViewById(R.id.updatedisplay);
+        mDatabaseupdates = FirebaseDatabase.getInstance().getReference("updates");
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allupdates);
+        mupdates.setAdapter(arrayAdapter);
+
+        mDatabaseupdates.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String value = dataSnapshot.getValue(String.class);
+                allupdates.add(value);
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override

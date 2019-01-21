@@ -46,7 +46,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                generalupdate(genupdate.getText().toString());
-
+                Toast.makeText(UpdateStaffActivity.this,"Update Successful",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UpdateStaffActivity.this, StaffActivity.class));
 
             }
         });
@@ -66,6 +67,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
 
 
     }
+
+
 
     protected void gymcapacity(String updatecapacity)
     {
