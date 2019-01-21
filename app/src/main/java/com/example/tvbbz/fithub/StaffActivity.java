@@ -34,7 +34,8 @@ public class StaffActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff);
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle("Staff Home Screen");
+
 
         //View Gym Capacity
         mcapacity = (TextView) findViewById(R.id.GymCapacity);
