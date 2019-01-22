@@ -15,12 +15,14 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class UpdateStaffActivity extends AppCompatActivity{
 
     private Button genupdatebutton;
     private EditText genupdate;
     private EditText capacity;
     private Button capacitybutton;
+
 
     private DatabaseReference mDatabase;
     private DatabaseReference mDatabaseupdate;
@@ -64,6 +66,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
                 startActivity(new Intent(UpdateStaffActivity.this, StaffActivity.class));
             }
         });
+
+
 
 
     }

@@ -34,6 +34,7 @@ public class StaffActivity extends AppCompatActivity{
     private Button signoutbutton;
     private TextView mcapacity;
     private ListView mupdates;
+    private Button delupbutton;
 
     private ArrayList<String>allupdates = new ArrayList<>();
 
@@ -123,6 +124,22 @@ public class StaffActivity extends AppCompatActivity{
             }
         });
 
+        //Deleting
+        delupbutton = findViewById(R.id.deleteupdatebutton);
+        delupbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteupdate();
+                startActivity(new Intent(StaffActivity.this, StaffActivity.class));
+            }
+        });
+
+    }
+
+    private void deleteupdate() {
+        DatabaseReference delup = FirebaseDatabase.getInstance().getReference("updates");
+        delup.removeValue();
+        Toast.makeText(this, "Update Deleted", Toast.LENGTH_SHORT).show();
     }
 
     private void openupdate()
