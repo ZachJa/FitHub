@@ -32,6 +32,12 @@
         <activity android:name=".UpdateStaffActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".HealthWellnessActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".StaffHealthWellnessActivity"
+            android:screenOrientation="portrait"/>
+
 
     </application>
 
