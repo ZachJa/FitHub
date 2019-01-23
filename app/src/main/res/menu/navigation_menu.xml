@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/navhome"
+        android:icon="@mipmap/baseline_home_black_18dp"
+        android:title="Home"/>
+    <item android:id="@+id/navhealthandwelness"
+        android:icon="@mipmap/baseline_fitness_center_black_18dp"
+        android:title="Health and Welness"/>
+    <item android:id="@+id/navsignout"
+        android:icon="@mipmap/baseline_power_settings_new_black_18dp"
+        android:title="Sign Out"/>
+
+</menu>

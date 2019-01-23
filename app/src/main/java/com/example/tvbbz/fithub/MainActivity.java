@@ -3,8 +3,11 @@ package com.example.tvbbz.fithub;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,14 +26,21 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Design Intialization
     private Button button;
     private TextView mcapacity;
     private ListView updateshome;
 
+    //Array reference
     private ArrayList<String> allupdates = new ArrayList<>();
 
+    //Database References
     private DatabaseReference mdatabase;
     private DatabaseReference mdatabaseupdates;
+
+    //For side nav menu
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mtoggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //For Action Bar Nav Window
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mtoggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        mDrawerLayout.addDrawerListener(mtoggle);
+        mtoggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         //Sign out
         button = findViewById(R.id.signoutbutton);
@@ -102,6 +119,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //For Action Bar Button Click
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(mtoggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //Sign Out Function
     private void signout(){
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this, LoginActivity.class);
