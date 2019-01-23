@@ -30,7 +30,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     //Design Intialization
-    private Button button;
     private TextView mcapacity;
     private ListView updateshome;
 
@@ -126,6 +125,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent1);
                     break;
 
+                    case(R.id.navsignout):
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent2 = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent2);
+                        break;
+
 
                 }
 
@@ -135,15 +142,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //Sign out
-        button = findViewById(R.id.signoutbutton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signout();
-
-            }
-        });
 
     }
 
@@ -156,14 +154,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Sign Out Function
-    private void signout(){
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
 
-    }
 
 }

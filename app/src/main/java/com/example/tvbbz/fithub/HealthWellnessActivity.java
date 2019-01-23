@@ -61,6 +61,14 @@ public class HealthWellnessActivity extends AppCompatActivity{
                         startActivity(intent1);
                         break;
 
+                    case(R.id.navsignout):
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent2 = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent2);
+                        break;
+
 
                 }
 

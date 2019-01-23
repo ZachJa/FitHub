@@ -34,8 +34,6 @@ import java.util.Map;
 
 public class StaffActivity extends AppCompatActivity{
 
-
-    private Button signoutbutton;
     private TextView mcapacity;
     private ListView mupdates;
     private Button delupbutton;
@@ -112,15 +110,6 @@ public class StaffActivity extends AppCompatActivity{
         });
 
 
-        //Sign out
-
-        signoutbutton = findViewById(R.id.signoutbuttonstaff);
-        signoutbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signout();
-            }
-        });
 
         //Deleting
         delupbutton = findViewById(R.id.deleteupdatebutton);
@@ -157,6 +146,14 @@ public class StaffActivity extends AppCompatActivity{
                     startActivity(intent2);
                     break;
 
+                    case(R.id.navsignout):
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent3 = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent3);
+                        break;
+
 
                 }
 
@@ -174,13 +171,6 @@ public class StaffActivity extends AppCompatActivity{
         Toast.makeText(this, "Update Deleted", Toast.LENGTH_SHORT).show();
     }
 
-    private void signout(){
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this,LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
     //For Action Bar Button Click
     @Override

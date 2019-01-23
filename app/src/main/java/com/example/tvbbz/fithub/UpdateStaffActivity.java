@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.tvbbz.fithub.data.model.GeneralUpdate;
 import com.example.tvbbz.fithub.data.model.GymCapacity;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -99,6 +100,15 @@ public class UpdateStaffActivity extends AppCompatActivity{
                     case(R.id.navupdateinfo):Intent intent2 = new Intent(getApplicationContext(),UpdateStaffActivity.class);
                         startActivity(intent2);
                         break;
+
+                    case(R.id.navsignout):
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent3 = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent3);
+                        break;
+
 
 
                 }

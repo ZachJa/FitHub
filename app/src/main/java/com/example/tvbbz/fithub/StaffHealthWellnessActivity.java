@@ -10,6 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StaffHealthWellnessActivity extends AppCompatActivity{
 
     //For side nav menu
@@ -46,6 +48,15 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
                     case(R.id.navupdateinfo):Intent intent2 = new Intent(getApplicationContext(),UpdateStaffActivity.class);
                         startActivity(intent2);
                         break;
+
+                    case(R.id.navsignout):
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent3 = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent3);
+                        break;
+
 
 
 
