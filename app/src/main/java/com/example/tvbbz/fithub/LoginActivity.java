@@ -15,10 +15,14 @@ import android.widget.Toast;
 import com.example.tvbbz.fithub.data.StaffProvider;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     private FirebaseAuth firebaseAuth;
 
+    private TextView forgotpassword;
+    private DatabaseReference mdatabase;
 
     /* Email: zacharyparch@yahoo.com  Password: fithubadmin */
 
@@ -42,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.loginbutton);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
 
         //Checking if user already logged in
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -68,12 +75,30 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Forgotten Password
+        forgotpassword = (TextView) findViewById(R.id.forgotpassword);
+        forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openresetpassword();
+            }
+        });
+
+
     }
+
+    private void openresetpassword(){
+        Intent intent = new Intent(this,PasswordActivity.class);
+        startActivity(intent);
+    }
+
 
     private void opensignup(){
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
+
+    //Validation of User Login
 
     private void validate(final String email, String password)
     {
@@ -109,4 +134,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-}
+
+    }
+
+
+
+
+
+

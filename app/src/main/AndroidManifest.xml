@@ -38,6 +38,9 @@
         <activity android:name=".StaffHealthWellnessActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".PasswordActivity"
+            android:screenOrientation="portrait"/>
+
 
     </application>
 

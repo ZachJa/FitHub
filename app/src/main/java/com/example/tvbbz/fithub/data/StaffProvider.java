@@ -7,6 +7,7 @@ public class StaffProvider {
 
     public static boolean isStaffMember(String email){
         List<String> members = new ArrayList<>();
+
         members.add("zacharyparch@yahoo.com");
 
         for(String member:members){
@@ -14,7 +15,6 @@ public class StaffProvider {
                 return true;
             }
         }
-
         return false;
     }
 }

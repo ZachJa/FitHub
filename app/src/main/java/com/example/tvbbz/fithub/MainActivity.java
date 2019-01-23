@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mtoggle;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 String value = dataSnapshot.getValue(String.class);
                 allupdates.add(value);
                 arrayAdapter.notifyDataSetChanged();
+
+
             }
 
             @Override
@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
