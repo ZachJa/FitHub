@@ -41,6 +41,9 @@
         <activity android:name=".PasswordActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".BMIActivity"
+            android:screenOrientation="portrait"/>
+
 
     </application>
 

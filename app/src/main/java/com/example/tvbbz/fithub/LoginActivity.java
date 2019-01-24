@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button login;
     private FirebaseAuth firebaseAuth;
+    private ProgressBar mprogress;
 
     private TextView forgotpassword;
     private DatabaseReference mdatabase;
@@ -49,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        //Progress Bar
+        mprogress = (ProgressBar)findViewById(R.id.progressBar);
+        mprogress.setVisibility(View.GONE);
+
 
         //Checking if user already logged in
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -62,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mprogress.setVisibility(View.VISIBLE);
                 validate(email.getText().toString(), password.getText().toString());
             }
         });
@@ -83,6 +90,8 @@ public class LoginActivity extends AppCompatActivity {
                 openresetpassword();
             }
         });
+
+
 
 
     }

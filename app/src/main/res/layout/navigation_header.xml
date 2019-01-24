@@ -11,8 +11,19 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="48dp"
-        android:padding="20dp"
+        android:padding="25dp"
         android:text="FitHub"
         android:textColor="@android:color/background_light"
-        android:textSize="22dp" />
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/compnamenav"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="66dp"
+        android:padding="10dp"
+        android:text="by Express Fitness"
+        android:textColor="@android:color/white" />
 </RelativeLayout>

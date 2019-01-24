@@ -1,47 +1,39 @@
 package com.example.tvbbz.fithub;
 
-import android.content.ClipData;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
-
-public class HealthWellnessActivity extends AppCompatActivity{
+public class BMIActivity extends AppCompatActivity{
 
     //For side nav menu
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mtoggle;
 
-    private Button bmi;
+    //For Calculation
+    private EditText weightinput;
+    private EditText heightinput;
+    private Button bmicalc;
+    private TextView bmiresult;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_health_wellness);
-        getSupportActionBar().setTitle("Health and Wellness");
-
+        setContentView(R.layout.activity_bmi);
+        getSupportActionBar().setTitle("BMI Calculator");
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -79,15 +71,21 @@ public class HealthWellnessActivity extends AppCompatActivity{
             }
         });
 
-        //Open BMI
-        bmi = (Button) findViewById(R.id.Bmibutton);
-        bmi.setOnClickListener(new View.OnClickListener() {
+
+        //Calculations
+
+        weightinput = (EditText) findViewById(R.id.weightinput);
+        heightinput = (EditText) findViewById(R.id.heightinput);
+        bmicalc = (Button) findViewById(R.id.bmibutton);
+        bmiresult = (TextView) findViewById(R.id.bmiresult);
+
+        bmicalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HealthWellnessActivity.this, BMIActivity.class);
-                startActivity(intent);
+                calculateBMI();
             }
         });
+
     }
 
     //For Action Bar Button Click
@@ -98,5 +96,49 @@ public class HealthWellnessActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void calculateBMI(){
+
+        String heightstring = heightinput.getText().toString();
+        String weightstring = weightinput.getText().toString();
+
+        if(heightstring != null && !"".equals(heightstring) &&
+                weightstring != null && !"".equals(weightstring)){
+
+            float weightvalue = Float.parseFloat(weightstring) * 703;
+            float heightvalue = Float.parseFloat(heightstring);
+
+            float bmi = weightvalue /(heightvalue * heightvalue);
+
+            displayBMI(bmi);
+        }
+    }
+
+    private void displayBMI(float bmi){
+        String bmilabel = "";
+
+        if(Float.compare(bmi, 15f)<=0){
+            bmilabel = getString(R.string.very_severely_under_weight);
+        }else if(Float.compare(bmi, 15f)>0 && Float.compare(bmi, 16f)<=0){
+            bmilabel = getString(R.string.severely_under_weight);
+        }else if(Float.compare(bmi, 16f)>0 && Float.compare(bmi, 18.5f)<=0){
+            bmilabel = getString(R.string.under_weight);
+        }else if(Float.compare(bmi, 18.5f)>0 && Float.compare(bmi, 25f)<=0){
+            bmilabel = getString(R.string.normal);
+        }else if(Float.compare(bmi, 25f)>0 && Float.compare(bmi, 30f)<=0){
+            bmilabel = getString(R.string.overweight);
+        }else if(Float.compare(bmi, 30f)>0 && Float.compare(bmi, 35f)<=0){
+            bmilabel = getString(R.string.obese);
+        }else if(Float.compare(bmi, 35f)>0 && Float.compare(bmi, 40f)<=0){
+            bmilabel = getString(R.string.obese2);
+        }else{
+            bmilabel = getString(R.string.obese3);
+        }
+
+        bmilabel = bmi + "\n\n" + bmilabel;
+        bmiresult.setText(bmilabel);
+    }
+
+
 
 }

@@ -8,5 +8,18 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="very_severely_under_weight">Very Severely UnderWeight</string>
+    <string name="severely_under_weight">Severely UnderWeight</string>
+    <string name="under_weight">UnderWeight</string>
+    <string name="normal">Normal</string>
+    <string name="overweight">Over-Weight</string>
+    <string name="obese">Obese Class (Moderately Obese)</string>
+    <string name="obese2">Obese Class 2 (Severely Obese)</string>
+    <string name="obese3">Obese Class 3 (Very Severely Obese)</string>
+
+
+
 
 </resources>
