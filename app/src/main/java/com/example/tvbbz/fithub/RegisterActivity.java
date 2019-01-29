@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText name, password, address, email;
+    private EditText name, password, email,key;
     private Button registerbutton;
     private TextView userlogin;
     private FirebaseAuth firebaseAuth;
@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         getSupportActionBar().hide();
         setupUIviews();
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -51,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     });
+
                 }
             }
         });
@@ -73,10 +75,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         name = (EditText) findViewById(R.id.nameinput);
         password = (EditText) findViewById(R.id.passwordinput);
-        address = (EditText) findViewById(R.id.addressinput);
         email = (EditText) findViewById(R.id.emailinput);
         registerbutton = (Button) findViewById(R.id.signupbutton);
         userlogin = (TextView) findViewById(R.id.loginfromregister);
+        key = (EditText) findViewById(R.id.key);
 
     }
 
@@ -89,12 +91,19 @@ public class RegisterActivity extends AppCompatActivity {
         String namecheck = name.getText().toString();
         String passwordcheck = password.getText().toString();
         String emailcheck = email.getText().toString();
+        String keycheck = key.getText().toString();
+        String Key = "Express";
 
 
         if(namecheck.isEmpty() || passwordcheck.isEmpty() || emailcheck.isEmpty()){
 
             Toast.makeText(this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
-        }else{
+        }
+       /* else if(keycheck != Key){
+
+            Toast.makeText(this, "Please Enter Valid Key", Toast.LENGTH_SHORT).show();
+
+        }*/else{
             result = true;
         }
         return result;

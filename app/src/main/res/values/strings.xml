@@ -18,8 +18,7 @@
     <string name="obese">Obese Class (Moderately Obese)</string>
     <string name="obese2">Obese Class 2 (Severely Obese)</string>
     <string name="obese3">Obese Class 3 (Very Severely Obese)</string>
-
-
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

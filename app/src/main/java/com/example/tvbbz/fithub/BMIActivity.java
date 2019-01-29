@@ -73,12 +73,10 @@ public class BMIActivity extends AppCompatActivity{
 
 
         //Calculations
-
         weightinput = (EditText) findViewById(R.id.weightinput);
         heightinput = (EditText) findViewById(R.id.heightinput);
         bmicalc = (Button) findViewById(R.id.bmibutton);
         bmiresult = (TextView) findViewById(R.id.bmiresult);
-
         bmicalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +95,7 @@ public class BMIActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    //Calculate BMI
     public void calculateBMI(){
 
         String heightstring = heightinput.getText().toString();
@@ -114,6 +113,7 @@ public class BMIActivity extends AppCompatActivity{
         }
     }
 
+    //Compare Results
     private void displayBMI(float bmi){
         String bmilabel = "";
 
