@@ -49,6 +49,10 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
                         startActivity(intent2);
                         break;
 
+                    case(R.id.addequip):Intent intent4 = new Intent(getApplicationContext(),StaffEquipment.class);
+                        startActivity(intent4);
+                        break;
+
                     case(R.id.navsignout):
                         FirebaseAuth.getInstance().signOut();
                         Intent intent3 = new Intent(getApplicationContext(), LoginActivity.class);

@@ -112,7 +112,7 @@ public class StaffActivity extends AppCompatActivity{
 
 
         //Deleting
-        delupbutton = findViewById(R.id.deleteupdatebutton);
+        delupbutton = (Button) findViewById(R.id.deleteupdatebutton);
         delupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +145,10 @@ public class StaffActivity extends AppCompatActivity{
                     case(R.id.navupdateinfo):Intent intent2 = new Intent(getApplicationContext(),UpdateStaffActivity.class);
                     startActivity(intent2);
                     break;
+
+                    case(R.id.addequip):Intent intent4 = new Intent(getApplicationContext(),StaffEquipment.class);
+                        startActivity(intent4);
+                        break;
 
                     case(R.id.navsignout):
                         FirebaseAuth.getInstance().signOut();

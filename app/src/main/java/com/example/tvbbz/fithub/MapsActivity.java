@@ -1,7 +1,13 @@
 package com.example.tvbbz.fithub;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -9,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -22,6 +29,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
     }
 
 
@@ -38,9 +47,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Mandeville and move the camera
+        LatLng mandeville = new LatLng(18.040504, -77.510772);
+        mMap.addMarker(new MarkerOptions().position(mandeville).title("Marker in Mandeville"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mandeville));
+
+        // Add a marker in HWT and move the camera
+        LatLng hwt = new LatLng(18.015655, -76.795822);
+        mMap.addMarker(new MarkerOptions().position(hwt).title("Marker in Half Way Tree"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(hwt));
+
+        // Add a marker in New Kingston and move the camera
+        LatLng nkgn = new LatLng(18.006919, -76.789528);
+        mMap.addMarker(new MarkerOptions().position(nkgn).title("Marker in New Kingston"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(nkgn));
+
+        // Add a marker in Hope Road and move the camera
+        LatLng platinum = new LatLng(18.020368, -76.769731);
+        mMap.addMarker(new MarkerOptions().position(platinum).title("Marker in Hope Road"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(platinum));
+
+        // Add a marker in Manor Park and move the camera
+        LatLng mp = new LatLng(18.048309, -76.794816);
+        mMap.addMarker(new MarkerOptions().position(mp).title("Marker in Manor Park"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mp));
+
+        // Add a marker in Mobay and move the camera
+        LatLng mobay = new LatLng(18.454722, -77.927067);
+        mMap.addMarker(new MarkerOptions().position(mobay).title("Marker in Mobay"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mobay));
+
     }
 }

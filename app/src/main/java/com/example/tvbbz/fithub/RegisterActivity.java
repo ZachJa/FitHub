@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         String namecheck = name.getText().toString();
         String passwordcheck = password.getText().toString();
         String emailcheck = email.getText().toString();
-        String keycheck = key.getText().toString();
+        String keycheck = key.getText().toString().trim();
         String Key = "Express";
 
 
@@ -99,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
         }
-       /* else if(keycheck != Key){
+       /*else if(keycheck != Key){
 
             Toast.makeText(this, "Please Enter Valid Key", Toast.LENGTH_SHORT).show();
 

@@ -13,6 +13,9 @@
     <item android:id="@+id/navupdateinfo"
         android:icon="@mipmap/baseline_update_black_18dp"
         android:title="Update Information"/>
+    <item android:id="@+id/addequip"
+        android:icon="@mipmap/baseline_directions_run_black_18dp"
+        android:title="Equipment"/>
     <item android:id="@+id/navsignout"
         android:icon="@mipmap/baseline_power_settings_new_black_18dp"
         android:title="Sign Out"/>

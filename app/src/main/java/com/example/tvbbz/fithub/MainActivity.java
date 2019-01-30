@@ -4,11 +4,13 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -47,12 +49,20 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mtoggle;
 
+    //Location Button
+    private Button locationbutton;
+
+    //Refresh
+    private FloatingActionButton refresh;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Home");
+
+
 
         //View Gym Capacity
         mcapacity = (TextView) findViewById(R.id.gymcapacity);
@@ -107,6 +117,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Open Location
+        locationbutton = (Button)findViewById(R.id.locationbutton);
+        locationbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         //For Action Bar Nav Window
@@ -149,6 +169,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Refresh
+        refresh = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
@@ -162,6 +192,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+   /* //For Refresh Button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-
+        getMenuInflater().inflate(R.menu.refresh_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    */
 }

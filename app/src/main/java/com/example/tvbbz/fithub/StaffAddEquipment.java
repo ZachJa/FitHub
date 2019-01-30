@@ -1,81 +1,50 @@
 package com.example.tvbbz.fithub;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
-import com.example.tvbbz.fithub.data.model.GeneralUpdate;
-import com.example.tvbbz.fithub.data.model.GymCapacity;
-import com.google.firebase.FirebaseApp;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-
-public class UpdateStaffActivity extends AppCompatActivity{
-
-    private Button genupdatebutton;
-    private EditText genupdate;
-    private EditText capacity;
-    private Button capacitybutton;
-
-
-    private DatabaseReference mDatabase;
-    private DatabaseReference mDatabaseupdate;
+public class StaffAddEquipment extends AppCompatActivity {
 
     //For side nav menu
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mtoggle;
 
+
+    private ImageView selectimage;
+    private EditText posttitle, postdescription;
+    private Button addnewequip;
+    private ProgressBar newuploadprogress;
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_staff);
-        getSupportActionBar().setTitle("Update Information");
+        setContentView(R.layout.staff_add_equipment);
+        getSupportActionBar().setTitle("Add Equipment");
 
-
-// ...
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabaseupdate = FirebaseDatabase.getInstance().getReference("updates");
-
-
-        //Updating Gym Information
-
-        genupdatebutton = (Button) findViewById(R.id.genupdatebutton);
-        genupdate = (EditText) findViewById(R.id.genupdate);
-
-        genupdatebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               generalupdate(genupdate.getText().toString());
-                Toast.makeText(UpdateStaffActivity.this,"Update Successful",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(UpdateStaffActivity.this, StaffActivity.class));
-
-            }
-        });
-
-        //Updating Gym Capacity
-        capacity = (EditText) findViewById(R.id.gymcapacity);
-        capacitybutton = (Button) findViewById(R.id.gymcapacitybutton);
-
-        capacitybutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gymcapacity(capacity.getText().toString());
-                Toast.makeText(UpdateStaffActivity.this,"Update Successful",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(UpdateStaffActivity.this, StaffActivity.class));
-            }
-        });
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -112,17 +81,13 @@ public class UpdateStaffActivity extends AppCompatActivity{
                         intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent3);
                         break;
-
-
-
                 }
-
                 return true;
-
             }
         });
 
     }
+
 
     //For Action Bar Button Click
     @Override
@@ -132,27 +97,4 @@ public class UpdateStaffActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-    protected void gymcapacity(String updatecapacity)
-    {
-        GymCapacity capacity = new GymCapacity();
-        capacity.setCapacity(updatecapacity);
-
-        mDatabase.child("capacity").setValue(capacity);
-    }
-
-    protected void generalupdate(String updatetext)
-    {
-        /*GeneralUpdate update = new GeneralUpdate();
-        update.setUpdate(updatetext);*/
-
-        mDatabaseupdate.push().setValue(updatetext);
-
-      /*mDatabaseupdate.child("update").setValue(update);*/
-    }
-
-
 }
