@@ -10,13 +10,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import com.google.firebase.storage.StorageReference;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.StorageReference;
 
 public class StaffEquipment extends AppCompatActivity {
 
     private FloatingActionButton addequip;
+
 
 
     //For side nav menu

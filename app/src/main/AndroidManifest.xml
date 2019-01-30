@@ -54,8 +54,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".StaffAddEquipment"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
 
 
       <!--  <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
