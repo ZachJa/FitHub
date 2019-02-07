@@ -85,6 +85,7 @@ public class BMIActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 calculateBMI();
+
             }
         });
 
@@ -120,6 +121,7 @@ public class BMIActivity extends AppCompatActivity{
     //Compare Results
     private void displayBMI(float bmi){
         String bmilabel = "";
+        String label ="Contact Me";
 
         if(Float.compare(bmi, 15f)<=0){
             bmilabel = getString(R.string.very_severely_under_weight);
@@ -139,9 +141,12 @@ public class BMIActivity extends AppCompatActivity{
             bmilabel = getString(R.string.obese3);
         }
 
-        bmilabel = bmi + "\n\n" + bmilabel;
+        bmilabel = bmi + "\n" + bmilabel + "\n" + label;
         bmiresult.setText(bmilabel);
     }
+
+
+
 
 
 

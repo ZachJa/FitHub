@@ -106,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/genupdatehome"
         app:layout_constraintVertical_bias="0.89"
         app:srcCompat="@mipmap/baseline_refresh_black_18dp" />
+
 </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.NavigationView

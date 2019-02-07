@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:background="@color/colorPrimary">
@@ -26,4 +27,13 @@
         android:padding="10dp"
         android:text="by Express Fitness"
         android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/compnamenav"
+        android:layout_marginEnd="-66dp"
+        android:layout_toStartOf="@+id/textView6"
+        app:srcCompat="@drawable/fithublogo" />
 </RelativeLayout>
