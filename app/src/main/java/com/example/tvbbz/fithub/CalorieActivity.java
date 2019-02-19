@@ -108,8 +108,8 @@ public class CalorieActivity extends AppCompatActivity {
 
         }else if (genstring == 2){
 
-            int cal =  (( (weightstring * 4) + (heightstring*4) -  (agestring*4)) + 655);
-            result.setText(cal);
+            double cal =  (( (weightstring * 4) + (heightstring*4) -  (agestring*4)) + 655);
+            result.setText((int) cal);
 
         }else
         {
