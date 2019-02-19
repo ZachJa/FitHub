@@ -1,9 +1,7 @@
 package com.example.tvbbz.fithub;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,39 +9,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
-
-public class HealthWellnessActivity extends AppCompatActivity{
+public class CalorieActivity extends AppCompatActivity {
 
     //For side nav menu
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mtoggle;
 
-    private Button bmi;
-    private Button calcalc;
 
+    private EditText height,weight,gen, age;
+
+    private Button calculate;
+    private TextView result;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_health_wellness);
-        getSupportActionBar().setTitle("Health and Wellness");
-
+        setContentView(R.layout.activity_calorie);
+        getSupportActionBar().setTitle("Calorie Counter");
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -85,26 +74,48 @@ public class HealthWellnessActivity extends AppCompatActivity{
             }
         });
 
-        //Open BMI
-        bmi = (Button) findViewById(R.id.Bmibutton);
-        bmi.setOnClickListener(new View.OnClickListener() {
+
+
+        weight = (EditText) findViewById(R.id.weightcalorie);
+        height = (EditText) findViewById(R.id.heightcalorie);
+        gen = (EditText) findViewById(R.id.gendersel);
+        age = (EditText) findViewById(R.id.calage);
+        result = (TextView) findViewById(R.id.calorieresult);
+        calculate = (Button) findViewById(R.id.calccal);
+        calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HealthWellnessActivity.this, BMIActivity.class);
-                startActivity(intent);
+                calculatecalorie();
             }
         });
 
-        //Open Calorie Calc
-        calcalc = (Button) findViewById(R.id.tocalcalc);
-        calcalc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HealthWellnessActivity.this, CalorieActivity.class);
-                startActivity(intent);
 
-            }
-        });
+
+
+
+    }
+
+    private void calculatecalorie() {
+
+        int weightstring = Integer.parseInt(weight.getText().toString());
+        int heightstring = Integer.parseInt(height.getText().toString());
+        int genstring = gen.getText().length();
+        int agestring = Integer.parseInt(age.getText().toString());
+
+        if (genstring == 1){
+
+
+
+        }else if (genstring == 2){
+
+            int cal =  (( (weightstring * 4) + (heightstring*4) -  (agestring*4)) + 655);
+            result.setText(cal);
+
+        }else
+        {
+            Toast.makeText(CalorieActivity.this, "Enter Gender",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     //For Action Bar Button Click
@@ -115,5 +126,4 @@ public class HealthWellnessActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
