@@ -83,7 +83,8 @@
             android:name=".StaffEquipment"
             android:screenOrientation="portrait" />
         <activity android:name=".UserEquiptment" />
-        <activity android:name=".CalorieActivity"></activity>
+        <activity android:name=".CalorieActivity" />
+        <activity android:name=".StaffViewHealthWelness"></activity>
     </application>
 
 </manifest>

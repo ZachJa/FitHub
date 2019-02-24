@@ -93,7 +93,7 @@ public class UpdateStaffActivity extends AppCompatActivity{
                         startActivity(intent);
                         break;
 
-                    case(R.id.navhealthandwelness):Intent intent1 = new Intent(getApplicationContext(), StaffHealthWellnessActivity.class);
+                    case(R.id.navhealthandwelness):Intent intent1 = new Intent(getApplicationContext(), StaffViewHealthWelness.class);
                         startActivity(intent1);
                         break;
 

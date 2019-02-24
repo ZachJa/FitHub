@@ -112,7 +112,7 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
                         startActivity(intent);
                         break;
 
-                    case(R.id.navhealthandwelness):Intent intent1 = new Intent(getApplicationContext(), StaffHealthWellnessActivity.class);
+                    case(R.id.navhealthandwelness):Intent intent1 = new Intent(getApplicationContext(), StaffViewHealthWelness.class);
                         startActivity(intent1);
                         break;
 
@@ -151,7 +151,9 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
 
 
 
-        final String fileNAME = filename.getText().toString();
+        final String fileNAME = filename.getText().toString()+".pdf";
+        final String fileNAME1 = filename.getText().toString();
+
                 //pdfUri.getLastPathSegment().toString()
 
         StorageReference storageReference = mStorageRef.getRoot();
@@ -161,13 +163,12 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
                 String url = taskSnapshot.getStorage().getDownloadUrl().toString();
 
                 DatabaseReference databaseReference = mdatabaseref.getRef();
-
-                databaseReference.child(fileNAME).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                databaseReference.child("uploads").child(fileNAME1).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(StaffHealthWellnessActivity.this,"File Sucessfully Uploaded", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(StaffHealthWellnessActivity.this,StaffHealthWellnessActivity.class);
+                            Intent intent = new Intent(StaffHealthWellnessActivity.this,StaffViewHealthWelness.class);
                             startActivity(intent);
                         }else {
 
