@@ -37,6 +37,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.imageviewhol
 
         Upload uploadcurrent = mupload.get(i);
         imageviewholder.textViewname.setText(uploadcurrent.getMname());
+        imageviewholder.textdesc.setText(uploadcurrent.getMdesc());
 
         Picasso.with(mcontext)
                 .load(uploadcurrent.getMimageurl())
@@ -54,13 +55,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.imageviewhol
 
     public class imageviewholder extends RecyclerView.ViewHolder{
 
-        public TextView textViewname;
+        public TextView textViewname,textdesc;
         public ImageView imageview;
 
         public imageviewholder(@NonNull View itemView) {
             super(itemView);
 
             textViewname = itemView.findViewById(R.id.textnameview);
+            textdesc = itemView.findViewById(R.id.textdescview);
             imageview = itemView.findViewById(R.id.imageviewupload);
 
         }

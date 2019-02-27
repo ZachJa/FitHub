@@ -44,7 +44,7 @@ public class StaffAddEquipment extends AppCompatActivity {
 
 
     private ImageView viewimage;
-    private EditText posttitle;
+    private EditText posttitle,describe;
     private Button addnewequip, selectimage;
     private ProgressBar newuploadprogress;
 
@@ -107,6 +107,7 @@ public class StaffAddEquipment extends AppCompatActivity {
 
         viewimage = (ImageView) findViewById(R.id.imageselect);
         posttitle = (EditText) findViewById(R.id.equiptitle);
+        describe = (EditText) findViewById(R.id.descequipment);
         selectimage = (Button) findViewById(R.id.uploadimage);
         addnewequip = (Button) findViewById(R.id.newequipbutton);
         newuploadprogress = (ProgressBar) findViewById(R.id.newequipprogressbar);
@@ -161,7 +162,7 @@ public class StaffAddEquipment extends AppCompatActivity {
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
                             //Log.d(TAG, "onSuccess: firebase download url: " + downloadUrl.toString());
-                            Upload upload = new Upload(posttitle.getText().toString().trim(),downloadUrl.toString());
+                            Upload upload = new Upload(posttitle.getText().toString().trim(),describe.getText().toString().trim(),downloadUrl.toString());
 
                             String uploadId = mdatabaseref.push().getKey();
                             mdatabaseref.child(uploadId).setValue(upload);

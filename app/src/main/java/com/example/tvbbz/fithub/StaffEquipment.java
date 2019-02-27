@@ -98,7 +98,6 @@ public class StaffEquipment extends AppCompatActivity {
         mrecyclerview = (RecyclerView) findViewById(R.id.recyclerview);
         mrecyclerview.setHasFixedSize(true);
         mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
-
         muploads = new ArrayList<>();
 
         mdatabaseref = FirebaseDatabase.getInstance().getReference("equipment");

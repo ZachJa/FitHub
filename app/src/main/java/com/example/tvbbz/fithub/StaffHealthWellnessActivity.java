@@ -151,16 +151,19 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
 
 
 
-        final String fileNAME = filename.getText().toString()+".pdf";
+       // final String fileNAME = filename.getText().toString()+".pdf";
+        //final String fileNAME1 = filename.getText().toString();
+
+        final String fileNAME =  pdfUri.getLastPathSegment().toString()+".pdf";
         final String fileNAME1 = filename.getText().toString();
 
-                //pdfUri.getLastPathSegment().toString()
 
-        StorageReference storageReference = mStorageRef.getRoot();
+
+        final StorageReference storageReference = mStorageRef.getRoot();
         storageReference.child("uploads").child(fileNAME).putFile(pdfUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                String url = taskSnapshot.getStorage().getDownloadUrl().toString();
+                String url = storageReference.getDownloadUrl().toString();
 
                 DatabaseReference databaseReference = mdatabaseref.getRef();
                 databaseReference.child("uploads").child(fileNAME1).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
