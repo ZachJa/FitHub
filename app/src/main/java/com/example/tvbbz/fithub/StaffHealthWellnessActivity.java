@@ -155,7 +155,7 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
        // final String fileNAME = filename.getText().toString()+".pdf";
         //final String fileNAME1 = filename.getText().toString();
 
-        final String fileNAME =  System.currentTimeMillis()+"";
+        final String fileNAME =  System.currentTimeMillis()+".pdf";
         final String fileNAME1 = filename.getText().toString();
 
         //pdfUri.getLastPathSegment().toString()

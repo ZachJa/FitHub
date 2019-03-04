@@ -17,21 +17,21 @@ public class adapterHW extends RecyclerView.Adapter<adapterHW.viewHolder> {
     RecyclerView recyclerView;
     Context context;
     ArrayList<String> items = new ArrayList<>();
-    ArrayList<String> url = new ArrayList<>();
+    ArrayList<String> url ;
 
-    public void update(String name, String url){
+    public void update(String name, String urls){
 
         items.add(name);
-        items.add(url);
+        url.add(urls);
         notifyDataSetChanged();
 
     }
 
-    public adapterHW(RecyclerView recyclerView, Context context, ArrayList<String> items, ArrayList<String> url) {
+    public adapterHW(RecyclerView recyclerView, Context context, ArrayList<String> items, ArrayList<String> urls) {
         this.recyclerView = recyclerView;
         this.context = context;
         this.items = items;
-        this.url = url;
+        this.url = urls;
     }
 
     @NonNull
@@ -53,18 +53,23 @@ public class adapterHW extends RecyclerView.Adapter<adapterHW.viewHolder> {
         return items.size();
     }
 
+
+
+
     public class viewHolder extends RecyclerView.ViewHolder{
+
         TextView nof;
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+
             nof = itemView.findViewById(R.id.nameoffile);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = recyclerView.getChildLayoutPosition(v);
-                    Intent intent = new Intent();
-                    intent.setType(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(url.get(position)));
+                    Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(url.get(position)));
                     context.startActivity(intent);
                 }
             });

@@ -57,6 +57,7 @@ public class StaffViewHealthWelness extends AppCompatActivity {
 
                 String filename = dataSnapshot.getKey();
                 String url = dataSnapshot.getValue(String.class);
+               // Toast.makeText(StaffViewHealthWelness.this,url,Toast.LENGTH_SHORT).show();
                 ((adapterHW)hwrecyclerView.getAdapter()).update(filename,url);
             }
 
@@ -81,18 +82,14 @@ public class StaffViewHealthWelness extends AppCompatActivity {
             }
         });
 
-
-
         hwrecyclerView = findViewById(R.id.hwrecyclerview);
         hwrecyclerView.setLayoutManager(new LinearLayoutManager(StaffViewHealthWelness.this));
         adapterHW adapterhw = new adapterHW(hwrecyclerView,StaffViewHealthWelness.this,new ArrayList<String>(),new ArrayList<String>());
         hwrecyclerView.setAdapter(adapterhw);
 
+        //------------------------------------------------------
 
-
-
-
-//Open Adding Page
+        //Open Adding Page
         add = (FloatingActionButton) findViewById(R.id.openaddfile);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
