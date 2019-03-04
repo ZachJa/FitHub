@@ -9,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,12 +39,53 @@ public class HealthWellnessActivity extends AppCompatActivity{
     private Button bmi;
     private Button calcalc;
 
+    RecyclerView hwrecyclerView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_wellness);
         getSupportActionBar().setTitle("Health and Wellness");
+
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String filename = dataSnapshot.getKey();
+                String url = dataSnapshot.getValue(String.class);
+                // Toast.makeText(StaffViewHealthWelness.this,url,Toast.LENGTH_SHORT).show();
+                ((adapterHW)hwrecyclerView.getAdapter()).update(filename,url);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        hwrecyclerView = findViewById(R.id.hwrecyclerview);
+        hwrecyclerView.setLayoutManager(new LinearLayoutManager(HealthWellnessActivity.this));
+        adapterHW adapterhw = new adapterHW(hwrecyclerView,HealthWellnessActivity.this,new ArrayList<String>(),new ArrayList<String>());
+        hwrecyclerView.setAdapter(adapterhw);
+
 
 
         //For Action Bar Nav Window

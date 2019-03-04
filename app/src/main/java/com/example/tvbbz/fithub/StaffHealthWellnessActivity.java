@@ -232,7 +232,7 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
       if(requestCode== 86 && resultCode == RESULT_OK && data!=null){
             pdfUri = data.getData();
-            notif.setText("File Selected : ");
+            notif.setText("File Selected");
         }else {
             Toast.makeText(StaffHealthWellnessActivity.this,"Select File",Toast.LENGTH_SHORT).show();
         }
