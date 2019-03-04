@@ -33,8 +33,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.net.URI;
-
 public class StaffHealthWellnessActivity extends AppCompatActivity{
 
     //For side nav menu
@@ -154,19 +152,20 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
        // final String fileNAME = filename.getText().toString()+".pdf";
         //final String fileNAME1 = filename.getText().toString();
 
-        final String fileNAME =  pdfUri.getLastPathSegment().toString()+".pdf";
-        final String fileNAME1 = filename.getText().toString();
+        final String fileNAME =  System.currentTimeMillis()+"";
+        //final String fileNAME1 = filename.getText().toString();
 
-
+        //pdfUri.getLastPathSegment().toString()
 
         final StorageReference storageReference = mStorageRef.getRoot();
         storageReference.child("uploads").child(fileNAME).putFile(pdfUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                String url = storageReference.getDownloadUrl().toString();
+
+               String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 
                 DatabaseReference databaseReference = mdatabaseref.getRef();
-                databaseReference.child("uploads").child(fileNAME1).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                databaseReference.child("uploads").child(fileNAME).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -220,9 +219,9 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-      if(data!=null){
+      if(requestCode== 86 && resultCode == RESULT_OK && data!=null){
             pdfUri = data.getData();
-            notif.setText("File Selected");
+            notif.setText("File Selected : " + data.getData().getLastPathSegment());
         }else {
             Toast.makeText(StaffHealthWellnessActivity.this,"Select File",Toast.LENGTH_SHORT).show();
         }
