@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.net.URI;
 
 public class StaffHealthWellnessActivity extends AppCompatActivity{
 
@@ -139,7 +142,7 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
 
     }
 
-    private void uploadFile(Uri pdfUri) {
+    private void uploadFile(final Uri pdfUri) {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -153,7 +156,7 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
         //final String fileNAME1 = filename.getText().toString();
 
         final String fileNAME =  System.currentTimeMillis()+"";
-        //final String fileNAME1 = filename.getText().toString();
+        final String fileNAME1 = filename.getText().toString();
 
         //pdfUri.getLastPathSegment().toString()
 
@@ -162,23 +165,31 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-               String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+              Task<Uri> url = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+              url.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                  @Override
+                  public void onSuccess(Uri uri) {
 
-                DatabaseReference databaseReference = mdatabaseref.getRef();
-                databaseReference.child("uploads").child(fileNAME).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(StaffHealthWellnessActivity.this,"File Sucessfully Uploaded", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(StaffHealthWellnessActivity.this,StaffViewHealthWelness.class);
-                            startActivity(intent);
-                        }else {
+                      String fileurl = uri.toString();
 
-                            Toast.makeText(StaffHealthWellnessActivity.this,"File NOT Sucessfully Uploaded", Toast.LENGTH_SHORT).show();
+                      DatabaseReference databaseReference = mdatabaseref.getRef();
+                      databaseReference.child("uploads").child(fileNAME1).setValue(fileurl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                          @Override
+                          public void onComplete(@NonNull Task<Void> task) {
+                              if(task.isSuccessful()){
+                                  Toast.makeText(StaffHealthWellnessActivity.this,"File Sucessfully Uploaded", Toast.LENGTH_SHORT).show();
+                                  Intent intent = new Intent(StaffHealthWellnessActivity.this,StaffViewHealthWelness.class);
+                                  startActivity(intent);
+                              }else {
 
-                        }
-                    }
-                });
+                                  Toast.makeText(StaffHealthWellnessActivity.this,"File NOT Sucessfully Uploaded", Toast.LENGTH_SHORT).show();
+
+                              }
+                          }
+                      });
+                  }
+              });
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -221,7 +232,7 @@ public class StaffHealthWellnessActivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
       if(requestCode== 86 && resultCode == RESULT_OK && data!=null){
             pdfUri = data.getData();
-            notif.setText("File Selected : " + data.getData().getLastPathSegment());
+            notif.setText("File Selected : ");
         }else {
             Toast.makeText(StaffHealthWellnessActivity.this,"Select File",Toast.LENGTH_SHORT).show();
         }
