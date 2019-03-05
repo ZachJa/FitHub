@@ -28,6 +28,7 @@ public class UpdateStaffActivity extends AppCompatActivity{
     private EditText genupdate;
     private EditText capacity;
     private Button capacitybutton;
+    private Button victorybutton;
 
 
     private DatabaseReference mDatabase;
@@ -77,6 +78,15 @@ public class UpdateStaffActivity extends AppCompatActivity{
             }
         });
 
+        victorybutton = (Button) findViewById(R.id.newmembervictory);
+        victorybutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UpdateStaffActivity.this, StaffAddVictory.class);
+                startActivity(intent);
+            }
+        });
+
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mtoggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
@@ -121,6 +131,8 @@ public class UpdateStaffActivity extends AppCompatActivity{
 
             }
         });
+
+
 
     }
 

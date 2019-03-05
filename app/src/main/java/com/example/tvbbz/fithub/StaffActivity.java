@@ -37,6 +37,7 @@ public class StaffActivity extends AppCompatActivity{
     private TextView mcapacity;
     private ListView mupdates;
     private Button delupbutton;
+    private Button vic;
 
     private ArrayList<String>allupdates = new ArrayList<>();
 
@@ -70,6 +71,16 @@ public class StaffActivity extends AppCompatActivity{
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        //Open Victories
+        vic = (Button) findViewById(R.id.membvictory);
+        vic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StaffActivity.this, StaffViewVictory.class);
+                startActivity(intent);
             }
         });
 

@@ -2,6 +2,8 @@ package com.example.tvbbz.fithub;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +12,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.collection.LLRBNode;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -34,7 +41,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     //Design Intialization
-    private TextView mcapacity;
+    private TextView mcapacity,mcapacity2,mcapacity3;
     private ListView updateshome;
 
 
@@ -52,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     //Location Button
     private Button locationbutton;
 
+    private Button mfp;
+
     //Refresh
     private FloatingActionButton refresh;
 
@@ -62,17 +71,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Home");
 
-
-
         //View Gym Capacity
         mcapacity = (TextView) findViewById(R.id.gymcapacity);
+        mcapacity2 = (TextView) findViewById(R.id.gymcapacity2);
+        mcapacity3 = (TextView) findViewById(R.id.gymcapacity3);
         mdatabase = FirebaseDatabase.getInstance().getReference("capacity/capacity");
 
         mdatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
-                mcapacity.setText(value);
+                if(value.length() == 5)
+                {
+                    //value.setTextColor(getResources().getColor(R.color.colorAccent));
+                    mcapacity.setText(value);
+
+                }else if(value.length() == 8)
+                {
+                    mcapacity2.setText(value);
+
+                }else if(value.length()==4){
+
+                    mcapacity3.setText(value);
+                }
+
             }
 
             @Override
@@ -153,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent3);
                         break;
 
+                    case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
+                        startActivity(intent4);
+                        break;
+
                     case(R.id.navsignout):
                         FirebaseAuth.getInstance().signOut();
                         Intent intent2 = new Intent(getApplicationContext(), LoginActivity.class);
@@ -175,6 +201,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+       //open myfitnesspal download
+        mfp = (Button) findViewById(R.id.myfitnesspal);
+        mfp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://play.google.com/store/apps/details?id=com.myfitnesspal.android&hl=en";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
             }
         });

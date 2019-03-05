@@ -38,6 +38,7 @@ public class HealthWellnessActivity extends AppCompatActivity{
 
     private Button bmi;
     private Button calcalc;
+    private Button victorylist;
 
     RecyclerView hwrecyclerView;
 
@@ -125,6 +126,16 @@ public class HealthWellnessActivity extends AppCompatActivity{
 
                 return true;
 
+            }
+        });
+
+        //Open victories
+        victorylist = (Button) findViewById(R.id.victory);
+        victorylist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HealthWellnessActivity.this, VictoryShoutout.class);
+                startActivity(intent);
             }
         });
 

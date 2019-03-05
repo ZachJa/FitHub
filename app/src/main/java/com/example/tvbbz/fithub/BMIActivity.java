@@ -59,6 +59,10 @@ public class BMIActivity extends AppCompatActivity{
                         startActivity(intent3);
                         break;
 
+                    case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
+                        startActivity(intent4);
+                        break;
+
                     case(R.id.navsignout):
                         FirebaseAuth.getInstance().signOut();
                         Intent intent2 = new Intent(getApplicationContext(), LoginActivity.class);

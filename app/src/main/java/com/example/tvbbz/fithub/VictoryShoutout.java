@@ -7,32 +7,40 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class CalorieActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class VictoryShoutout extends AppCompatActivity {
+
+    private RecyclerView mrecyclerview;
+    private ImageAdapter imageAdapter;
+
+    private DatabaseReference mdatabaseref;
+    private List<Upload> muploads;
+
 
     //For side nav menu
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mtoggle;
 
-
-    private EditText height,weight,gen, age;
-
-    private Button calculate;
-    private TextView result;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calorie);
-        getSupportActionBar().setTitle("Calorie Counter");
+        setContentView(R.layout.activity_victory_shoutout);
+        getSupportActionBar().setTitle("Victory Stories");
+
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -78,47 +86,33 @@ public class CalorieActivity extends AppCompatActivity {
             }
         });
 
+        mrecyclerview = (RecyclerView) findViewById(R.id.recyclerviewvictory);
+        mrecyclerview.setHasFixedSize(true);
+        mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        muploads = new ArrayList<>();
 
+        mdatabaseref = FirebaseDatabase.getInstance().getReference("victory");
 
-        weight = (EditText) findViewById(R.id.weightcalorie);
-        height = (EditText) findViewById(R.id.heightcalorie);
-        gen = (EditText) findViewById(R.id.gendersel);
-        age = (EditText) findViewById(R.id.calage);
-        result = (TextView) findViewById(R.id.calorieresult);
-        calculate = (Button) findViewById(R.id.calccal);
-        calculate.setOnClickListener(new View.OnClickListener() {
+        mdatabaseref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                calculatecalorie();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postsnapshot: dataSnapshot.getChildren()){
+                    Upload upload = postsnapshot.getValue(Upload.class);
+                    muploads.add(upload);
+                }
+
+                imageAdapter = new ImageAdapter(VictoryShoutout.this,muploads);
+                mrecyclerview.setAdapter(imageAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                Toast.makeText(VictoryShoutout.this, databaseError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
-
-
-    }
-
-    private void calculatecalorie() {
-
-        int weightstring = Integer.parseInt(weight.getText().toString());
-        int heightstring = Integer.parseInt(height.getText().toString());
-        int genstring = gen.getText().length();
-        int agestring = Integer.parseInt(age.getText().toString());
-
-        if (genstring == 1){
-
-
-
-        }else if (genstring == 2){
-
-            double cal =  (( (weightstring * 4) + (heightstring*4) -  (agestring*4)) + 655);
-            result.setText((int) cal);
-
-        }else
-        {
-            Toast.makeText(CalorieActivity.this, "Enter Gender",Toast.LENGTH_SHORT).show();
-        }
 
     }
 
@@ -130,4 +124,6 @@ public class CalorieActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

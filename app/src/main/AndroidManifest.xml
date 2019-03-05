@@ -84,7 +84,11 @@
             android:screenOrientation="portrait" />
         <activity android:name=".UserEquiptment" />
         <activity android:name=".CalorieActivity" />
-        <activity android:name=".StaffViewHealthWelness"></activity>
+        <activity android:name=".StaffViewHealthWelness" />
+        <activity android:name=".StaffAddVictory" />
+        <activity android:name=".StaffViewVictory" />
+        <activity android:name=".VictoryShoutout" />
+        <activity android:name=".ContactActivity"></activity>
     </application>
 
 </manifest>

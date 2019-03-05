@@ -2,7 +2,6 @@ package com.example.tvbbz.fithub;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,8 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEquiptment extends AppCompatActivity {
-
+public class StaffViewVictory extends AppCompatActivity {
 
     private RecyclerView mrecyclerview;
     private ImageAdapter imageAdapter;
@@ -42,8 +39,8 @@ public class UserEquiptment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_equiptment);
-        getSupportActionBar().setTitle("Equipment");
+        setContentView(R.layout.activity_staff_view_victory);
+        getSupportActionBar().setTitle("Victory");
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -57,28 +54,28 @@ public class UserEquiptment extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case(R.id.navhome): Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    case(R.id.navhome): Intent intent = new Intent(getApplicationContext(),StaffActivity.class);
                         startActivity(intent);
                         break;
 
-                    case(R.id.navhealthandwelness):Intent intent1 = new Intent(getApplicationContext(), HealthWellnessActivity.class);
+                    case(R.id.navhealthandwelness):Intent intent1 = new Intent(getApplicationContext(), StaffHealthWellnessActivity.class);
                         startActivity(intent1);
                         break;
 
-                    case(R.id.equipment):Intent intent3 = new Intent(getApplicationContext(), UserEquiptment.class);
-                        startActivity(intent3);
+                    case(R.id.navupdateinfo):Intent intent2 = new Intent(getApplicationContext(),UpdateStaffActivity.class);
+                        startActivity(intent2);
                         break;
 
-                    case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
+                    case(R.id.addequip):Intent intent4 = new Intent(getApplicationContext(),StaffEquipment.class);
                         startActivity(intent4);
                         break;
 
                     case(R.id.navsignout):
                         FirebaseAuth.getInstance().signOut();
-                        Intent intent2 = new Intent(getApplicationContext(), LoginActivity.class);
-                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent2);
+                        Intent intent3 = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent3);
                         break;
 
 
@@ -89,13 +86,12 @@ public class UserEquiptment extends AppCompatActivity {
             }
         });
 
-        mrecyclerview = (RecyclerView) findViewById(R.id.recyclerview);
+        mrecyclerview = (RecyclerView) findViewById(R.id.recyclerviewvictory);
         mrecyclerview.setHasFixedSize(true);
         mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
-
         muploads = new ArrayList<>();
 
-        mdatabaseref = FirebaseDatabase.getInstance().getReference("equipment");
+        mdatabaseref = FirebaseDatabase.getInstance().getReference("victory");
 
         mdatabaseref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -106,18 +102,16 @@ public class UserEquiptment extends AppCompatActivity {
                     muploads.add(upload);
                 }
 
-                imageAdapter = new ImageAdapter(UserEquiptment.this,muploads);
+                imageAdapter = new ImageAdapter(StaffViewVictory.this,muploads);
                 mrecyclerview.setAdapter(imageAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Toast.makeText(UserEquiptment.this, databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(StaffViewVictory.this, databaseError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
 
 
