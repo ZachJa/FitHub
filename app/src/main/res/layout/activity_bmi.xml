@@ -4,54 +4,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bknew"
     android:id="@+id/drawerLayout">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_alignBaseline="@+id/weightinput"
+            android:layout_toStartOf="@+id/textView20"
             android:text="@string/weight"
+            android:textColor="#000"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintHorizontal_bias="0.189"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.192" />
+            app:layout_constraintVertical_bias="0.192" /> -->
 
         <EditText
             android:id="@+id/weightinput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="205dp"
             android:ems="10"
-            android:hint="Weight in POUNDS/LBS"
+            android:hint="Weight in Pounds (LBS)"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintHorizontal_bias="0.68"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.182" />
+            app:layout_constraintVertical_bias="0.2" />
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="205dp"
             android:text="@string/height"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -59,17 +57,17 @@
             app:layout_constraintHorizontal_bias="0.564"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.183" />
+            app:layout_constraintVertical_bias="0.183" /> -->
 
         <EditText
             android:id="@+id/heightinput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="101dp"
             android:ems="10"
-            android:hint="Height in INCHES/IN"
+            android:hint="Height in Inches (IN)"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,11 +78,13 @@
             android:id="@+id/bmibutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="184dp"
+            android:layout_below="@+id/weightinput"
+            android:layout_centerHorizontal="true"
+            android:background="#0000ffff"
             android:text="Calculate"
+            android:textColor="@color/colorAccent"
+            android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -94,12 +94,14 @@
 
         <TextView
             android:id="@+id/bmiresult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="210dp"
+            android:layout_height="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="109dp"
+            android:background="#fff"
+            android:textAlignment="center"
+            android:textColor="#000"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,8 +110,57 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.741" />
 
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="Calculate your BMI"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="16dp" />
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="57dp"
+            android:text="Used to know if someone is OverWeight or UnderWeight"
+            tools:layout_editor_absoluteX="19dp"
+            tools:layout_editor_absoluteY="46dp" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView20"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-171dp"
+            android:text="Only Accurate for Beginners."
+            android:textColor="#000"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="171dp"
+            android:text="if you have a good sum of muscle \nthis will be inaccurate reading."
+            android:textAlignment="center"
+            android:textSize="9dp" />
+
+
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"

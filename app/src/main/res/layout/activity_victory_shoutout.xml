@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VictoryShoutout"
-    android:id="@+id/drawerLayout">
+    android:id="@+id/drawerLayout"
+    android:background="@drawable/bknew">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

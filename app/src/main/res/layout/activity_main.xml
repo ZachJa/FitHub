@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:id="@+id/drawerLayout"
-    android:background="@drawable/fithubbk"
+    android:background="#fff"
+
    >
 
 
@@ -76,9 +77,10 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/myfitnesspal"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
             android:text="Live Gym Capacity"
             android:textColor="@android:color/black"
             android:textSize="14dp"
@@ -93,37 +95,19 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="200dp"
+            android:layout_marginTop="218dp"
             android:text="General Updates"
             android:textColor="@android:color/black"
-            android:textSize="24dp"
+            android:textSize="22dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.174" />
-
-        <Button
-            android:id="@+id/locationbutton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="219dp"
-            android:background="#ffff"
-            android:text="All Our Locations"
-            android:textColor="#0ba16f"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.036"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genupdatehome"
-            app:layout_constraintVertical_bias="0.078" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton"
@@ -152,9 +136,9 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="19dp"
             android:layout_marginTop="169dp"
-            android:background="#1660e0"
+            android:background="#0000ffff"
             android:text="Join MyFitnessPal"
-            android:textColor="#ffff" />
+            android:textColor="#0075c8" />
 
         <TextView
             android:id="@+id/motive"
@@ -162,16 +146,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="109dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="107dp"
             android:text="Take control of your goals.\ntrack calories, log activites\nwith MyFitnessPal." />
 
         <ListView
             android:id="@+id/genupdatehome"
-            android:layout_width="369dp"
-            android:layout_height="192dp"
+            android:layout_width="match_parent"
+            android:layout_height="249dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:scrollbars="none"
+            android:stackFromBottom="true"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,6 +177,24 @@
             android:textColor="#000"
             android:textSize="24dp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/expresspromo"
+            android:layout_width="135dp"
+            android:layout_height="47dp"
+            android:layout_alignTop="@+id/gymcapacity"
+            android:layout_marginStart="-25dp"
+            android:layout_marginTop="-10dp"
+            android:layout_toEndOf="@+id/textView3"
+            app:srcCompat="@drawable/branding" />
+
+        <ImageView
+            android:id="@+id/myfitpalpromo"
+            android:layout_width="152dp"
+            android:layout_height="162dp"
+            android:layout_alignBottom="@+id/myfitnesspal"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/mfppromo" />
 
 
     </RelativeLayout>

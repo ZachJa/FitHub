@@ -66,6 +66,10 @@ public class VictoryShoutout extends AppCompatActivity {
                         startActivity(intent3);
                         break;
 
+                    case(R.id.location):Intent intent5 = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(intent5);
+                        break;
+
                     case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
                         startActivity(intent4);
                         break;

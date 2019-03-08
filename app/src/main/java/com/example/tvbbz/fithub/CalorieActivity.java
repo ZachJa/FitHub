@@ -24,6 +24,14 @@ public class CalorieActivity extends AppCompatActivity {
 
 
     private EditText height,weight,gen, age;
+    private int genint;
+    private String showresult;
+
+    private int finalvalue1;
+    private int finalweight;
+    private int finalage;
+    private int calorie ;
+
 
     private Button calculate;
     private TextView result;
@@ -58,6 +66,10 @@ public class CalorieActivity extends AppCompatActivity {
                         startActivity(intent3);
                         break;
 
+                    case(R.id.location):Intent intent5 = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(intent5);
+                        break;
+
                     case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
                         startActivity(intent4);
                         break;
@@ -80,47 +92,41 @@ public class CalorieActivity extends AppCompatActivity {
 
 
 
-        weight = (EditText) findViewById(R.id.weightcalorie);
-        height = (EditText) findViewById(R.id.heightcalorie);
-        gen = (EditText) findViewById(R.id.gendersel);
-        age = (EditText) findViewById(R.id.calage);
-        result = (TextView) findViewById(R.id.calorieresult);
+
+
         calculate = (Button) findViewById(R.id.calccal);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculatecalorie();
+                showresult = caloriecalculate();
+                result.setText(showresult);
             }
         });
 
 
 
-
-
     }
 
-    private void calculatecalorie() {
+    private String caloriecalculate() {
 
-        int weightstring = Integer.parseInt(weight.getText().toString());
-        int heightstring = Integer.parseInt(height.getText().toString());
-        int genstring = gen.getText().length();
-        int agestring = Integer.parseInt(age.getText().toString());
+        String output;
 
-        if (genstring == 1){
+        height = (EditText) findViewById(R.id.heightcalorie);
+        weight = (EditText) findViewById(R.id.weightcalorie);
+        gen = (EditText) findViewById(R.id.gendersel);
+        genint = gen.getText().toString().length();
+        age = (EditText) findViewById(R.id.calage);
 
 
+        finalvalue1 = Integer.parseInt(height.getText().toString());
 
-        }else if (genstring == 2){
 
-            double cal =  (( (weightstring * 4) + (heightstring*4) -  (agestring*4)) + 655);
-            result.setText((int) cal);
+          //  calorie = (int) (((finalweight *4.35)+(finalvalue1*4.7)-(finalage*4.7))+655);
 
-        }else
-        {
-            Toast.makeText(CalorieActivity.this, "Enter Gender",Toast.LENGTH_SHORT).show();
-        }
-
+        output = "Calories: "+finalvalue1;
+        return output;
     }
+
 
     //For Action Bar Button Click
     @Override

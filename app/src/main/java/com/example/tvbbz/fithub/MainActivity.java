@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Location Button
     private Button locationbutton;
-
     private Button mfp;
+
+    //Images
+    private ImageView express;
+    private ImageView myfitpal;
 
     //Refresh
     private FloatingActionButton refresh;
@@ -105,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         //View Gym Updates
         updateshome = (ListView) findViewById(R.id.genupdatehome);
+        updateshome.setFastScrollAlwaysVisible(true);
         mdatabaseupdates = FirebaseDatabase.getInstance().getReference("updates");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,allupdates);
         updateshome.setAdapter(arrayAdapter);
@@ -139,15 +144,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Open Location
-        locationbutton = (Button)findViewById(R.id.locationbutton);
-        locationbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MapsActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
 
@@ -173,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case(R.id.equipment):Intent intent3 = new Intent(getApplicationContext(), UserEquiptment.class);
                         startActivity(intent3);
+                        break;
+
+                    case(R.id.location):Intent intent5 = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(intent5);
                         break;
 
                     case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
@@ -212,6 +212,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String url = "https://play.google.com/store/apps/details?id=com.myfitnesspal.android&hl=en";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+        express = (ImageView)findViewById(R.id.expresspromo);
+        myfitpal = (ImageView) findViewById(R.id.myfitpalpromo);
+
+        express.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (Intent.ACTION_VIEW, Uri.parse("https://expressfitnessja.com/"));
+                startActivity(intent);
+            }
+        });
+
+        myfitpal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.myfitnesspal.com/"));
                 startActivity(intent);
             }
         });
