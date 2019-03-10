@@ -19,8 +19,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="101dp"
-            android:layout_toStartOf="@+id/Upload"
-            android:text="Select File" />
+            android:layout_toStartOf="@+id/notification"
+            android:text="Select File"
+            android:background="#0000ffff"
+            android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/notification"
@@ -36,18 +38,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Upload" />
+            android:text="Upload"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/filename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/Upload"
             android:layout_alignTop="@+id/selectFile"
-            android:layout_marginEnd="14dp"
             android:ems="10"
             android:hint="Enter File Name"
             android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/selectFile"
+            android:layout_marginTop="70dp"
+            android:textColor="#000"
+            android:text="Add new PDF file to our Database." />
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
@@ -55,6 +69,7 @@
         android:layout_height="match_parent"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
+        app:itemIconTint="@color/colorPrimary"
         app:headerLayout="@layout/navigation_header"
         android:id="@+id/navmenu">
     </android.support.design.widget.NavigationView>

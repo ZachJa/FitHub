@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".StaffEquipment"
     android:id="@+id/drawerLayout">
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recyclerview">
+        android:layout_height="match_parent">
 
 
     </android.support.v7.widget.RecyclerView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addequipmentbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="68dp"
+        android:layout_height="67dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="25dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,11 +37,12 @@
         app:srcCompat="@mipmap/baseline_fitness_center_black_18dp" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"

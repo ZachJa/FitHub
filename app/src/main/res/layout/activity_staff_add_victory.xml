@@ -24,7 +24,7 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageselect"
             app:layout_constraintVertical_bias="0.206" />
@@ -37,16 +37,18 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Add"
+            android:background="@color/colorPrimary"
+            android:text="Upload Victory"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/victorytitle"
-            app:layout_constraintVertical_bias="0.592" />
+            app:layout_constraintVertical_bias="0.672" />
 
         <ImageView
             android:id="@+id/imageselect"
-            android:layout_width="203dp"
+            android:layout_width="177dp"
             android:layout_height="175dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -82,7 +84,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Uploag Image"
+            android:text="Upload Image"
+            android:background="#0000ffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -94,12 +97,12 @@
             android:id="@+id/descvictory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="Description"
+            android:hint="Member Quote"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/newvictorybutton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +118,7 @@
         android:layout_height="match_parent"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
+        app:itemIconTint="@color/colorPrimary"
         app:headerLayout="@layout/navigation_header"
         android:id="@+id/navmenu">
     </android.support.design.widget.NavigationView>

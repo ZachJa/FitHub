@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.11" />
 
     <TextView
         android:id="@+id/textView5"
@@ -38,18 +38,19 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Gym Capacity Currently"
+        android:textColor="#000"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <ListView
         android:id="@+id/updatedisplay"
-        android:layout_width="344dp"
-        android:layout_height="181dp"
+        android:layout_width="357dp"
+        android:layout_height="230dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -59,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.539" />
 
     <TextView
         android:id="@+id/generalupdatestitle"
@@ -70,13 +71,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="General Updates"
-        android:textSize="18dp"
+        android:textSize="22dp"
+        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintVertical_bias="0.223" />
 
     <Button
         android:id="@+id/deleteupdatebutton"
@@ -86,13 +88,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#0000ffff"
         android:text="Delete All"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.223" />
+        app:layout_constraintVertical_bias="0.228" />
 
     <Button
         android:id="@+id/membvictory"
@@ -102,17 +106,35 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#0000ffff"
         android:text="Member Victories"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updatedisplay"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.227" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Open Update Staff in the Menu to Update these Items."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/membvictory"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"

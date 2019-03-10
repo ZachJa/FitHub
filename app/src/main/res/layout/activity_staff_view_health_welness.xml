@@ -15,8 +15,8 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/openaddfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="63dp"
+            android:layout_height="56dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="27dp"
@@ -30,10 +30,15 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/hwrecyclerview"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="501dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_margin="10dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -47,6 +52,7 @@
         android:layout_height="match_parent"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
+        app:itemIconTint="@color/colorPrimary"
         app:headerLayout="@layout/navigation_header"
         android:id="@+id/navmenu">
     </android.support.design.widget.NavigationView>

@@ -37,7 +37,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Add"
+            android:background="@color/colorPrimary"
+            android:text="Upload Equipment"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +48,7 @@
 
         <ImageView
             android:id="@+id/imageselect"
-            android:layout_width="203dp"
+            android:layout_width="176dp"
             android:layout_height="175dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -82,7 +84,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Uploag Image"
+            android:text="Choose Image"
+            android:background="#0000ffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -113,6 +116,7 @@
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
