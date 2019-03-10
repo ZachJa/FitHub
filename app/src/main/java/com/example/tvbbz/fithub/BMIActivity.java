@@ -63,6 +63,10 @@ public class BMIActivity extends AppCompatActivity{
                         startActivity(intent5);
                         break;
 
+                    case(R.id.about):Intent intent6 = new Intent(getApplicationContext(), AboutUs.class);
+                        startActivity(intent6);
+                        break;
+
                     case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
                         startActivity(intent4);
                         break;
@@ -88,7 +92,6 @@ public class BMIActivity extends AppCompatActivity{
         weightinput = (EditText) findViewById(R.id.weightinput);
         heightinput = (EditText) findViewById(R.id.heightinput);
         bmicalc = (Button) findViewById(R.id.bmibutton);
-        bmiresult = (TextView) findViewById(R.id.bmiresult);
         bmicalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +132,7 @@ public class BMIActivity extends AppCompatActivity{
     //Compare Results
     private void displayBMI(float bmi){
         String bmilabel = "";
+        bmiresult = (TextView) findViewById(R.id.bmiresult);
         String label ="Contact Me";
 
         if(Float.compare(bmi, 15f)<=0){

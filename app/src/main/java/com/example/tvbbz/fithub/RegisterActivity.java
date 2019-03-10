@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle("Sign Up");
         setupUIviews();
 
 
@@ -78,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.emailinput);
         registerbutton = (Button) findViewById(R.id.signupbutton);
         userlogin = (TextView) findViewById(R.id.loginfromregister);
-        key = (EditText) findViewById(R.id.key);
 
     }
 

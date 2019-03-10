@@ -24,7 +24,7 @@ public class PasswordActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
-        getSupportActionBar().setTitle("Change Password");
+        getSupportActionBar().hide();
 
         firebaseAuth = FirebaseAuth.getInstance();
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    android:background="@drawable/contactbk"
+    tools:context=".AboutUs">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
+            android:text="Express Fitness is a locally owned and operated fitness club, which focuses on providing a first world fitness facility at a price you can afford.\n
+             We provide state of the art equipment in a clean, convenient and safe environment.\n
+            Express Fitness is open 24 hours a day for your convenience, so you can work-out at a time that suits you! Any time, day or night.\n
+            Only the best and safest equipment will be used in the Express Fitness chain of clubs under the supervision of a professional team."
+            android:textAlignment="center"
+            android:textColor="#000" />
+
+        <Button
+            android:id="@+id/tandc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#0000ffff"
+            android:text="Terms and Conditions"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/membrates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tandc"
+            android:layout_centerHorizontal="true"
+            android:background="#0000ffff"
+            android:text="Membership Rates"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="18dp"
+            android:text="Express Fitness, Jamaica, WI"
+            android:textAlignment="center" />
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="@color/colorPrimary"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        android:id="@+id/navmenu">
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

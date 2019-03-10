@@ -10,26 +10,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ContactActivity extends AppCompatActivity {
+public class AboutUs extends AppCompatActivity {
 
     //For side nav menu
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mtoggle;
 
-    private TextView call,email, ahn;
-    private ImageView insta;
+    private Button membrates, tc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
-        getSupportActionBar().setTitle("Contact");
-
+        setContentView(R.layout.activity_about_us);
+        getSupportActionBar().setTitle("About Us");
 
         //For Action Bar Nav Window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -83,53 +80,27 @@ public class ContactActivity extends AppCompatActivity {
             }
         });
 
-        call = (TextView) findViewById(R.id.Call);
-        call.setOnClickListener(new View.OnClickListener() {
+        membrates = (Button) findViewById(R.id.membrates);
+        tc = (Button) findViewById(R.id.tandc);
+
+        membrates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 876 397 7272"));
-                startActivity(intent);
-
-            }
-        });
-
-
-        final String ChoseEmailClient ="helpdesk@expressfitnessja.com";
-        email = (TextView) findViewById(R.id.email);
-        email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("message/rfc822");
-                startActivity(Intent.createChooser(intent,ChoseEmailClient));
-            }
-        });
-
-        insta = (ImageView) findViewById(R.id.instapromote);
-        insta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.instagram.com/expressfitnessja/"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://expressfitnessja.com/content/membership-pricing"));
                 startActivity(intent);
             }
         });
 
-        ahn = (TextView) findViewById(R.id.afterhoursnum);
-        ahn.setOnClickListener(new View.OnClickListener() {
+        tc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 876 554 5180"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://expressfitnessja.com/article/terms-conditions"));
                 startActivity(intent);
             }
         });
-
-
-
-
-
 
     }
+
     //For Action Bar Button Click
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,4 +109,5 @@ public class ContactActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

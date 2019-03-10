@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".VictoryShoutout"
     android:id="@+id/drawerLayout"
-    android:background="@drawable/bknew">
+    android:background="@drawable/contactbk">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
         android:id="@+id/navmenu2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:itemIconTint="@color/colorPrimary"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_menu"></android.support.design.widget.NavigationView>

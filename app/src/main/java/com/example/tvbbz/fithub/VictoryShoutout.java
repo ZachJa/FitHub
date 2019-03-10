@@ -70,6 +70,10 @@ public class VictoryShoutout extends AppCompatActivity {
                         startActivity(intent5);
                         break;
 
+                    case(R.id.about):Intent intent6 = new Intent(getApplicationContext(), AboutUs.class);
+                        startActivity(intent6);
+                        break;
+
                     case(R.id.contact):Intent intent4 = new Intent(getApplicationContext(), ContactActivity.class);
                         startActivity(intent4);
                         break;

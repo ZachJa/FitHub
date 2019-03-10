@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:id="@+id/drawerLayout"
-    android:background="#fff"
-
+    android:background="@drawable/contactbk"
    >
 
 
@@ -27,7 +26,6 @@
             android:paddingLeft="10dp"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="22dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -46,7 +44,6 @@
             android:paddingLeft="10dp"
             android:textColor="#edce03"
             android:textSize="22dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -65,7 +62,6 @@
             android:paddingLeft="10dp"
             android:textColor="#f00505"
             android:textSize="22dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -96,12 +92,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:layout_alignStart="@+id/textView4"
             android:layout_marginTop="218dp"
             android:text="General Updates"
             android:textColor="@android:color/black"
             android:textSize="22dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.041"
@@ -132,9 +127,8 @@
             android:id="@+id/myfitnesspal"
             android:layout_width="149dp"
             android:layout_height="36dp"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="19dp"
+            android:layout_alignStart="@+id/textView4"
             android:layout_marginTop="169dp"
             android:background="#0000ffff"
             android:text="Join MyFitnessPal"
@@ -146,18 +140,21 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="66dp"
+            android:layout_marginStart="58dp"
             android:layout_marginTop="107dp"
             android:text="Take control of your goals.\ntrack calories, log activites\nwith MyFitnessPal." />
 
         <ListView
             android:id="@+id/genupdatehome"
             android:layout_width="match_parent"
-            android:layout_height="249dp"
+            android:layout_height="253dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="258dp"
             android:scrollbars="none"
-            android:stackFromBottom="true"
+            android:stackFromBottom="false"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -176,16 +173,14 @@
             android:text="Fitness starts \nwith what you \neat."
             android:textColor="#000"
             android:textSize="24dp"
-            android:textStyle="bold" />
+             />
 
         <ImageView
             android:id="@+id/expresspromo"
             android:layout_width="135dp"
             android:layout_height="47dp"
-            android:layout_alignTop="@+id/gymcapacity"
-            android:layout_marginStart="-25dp"
-            android:layout_marginTop="-10dp"
-            android:layout_toEndOf="@+id/textView3"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             app:srcCompat="@drawable/branding" />
 
         <ImageView
@@ -203,6 +198,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"
+        app:itemIconTint="@color/colorPrimary"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         android:id="@+id/navmenu">
