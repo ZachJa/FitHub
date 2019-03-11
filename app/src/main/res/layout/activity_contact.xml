@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContactActivity"
-    android:background="@drawable/contactbk"
+    android:background="#fff"
     android:id="@+id/drawerLayout">
 
     <RelativeLayout
@@ -64,7 +64,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="173dp"
-            android:background="#fff"
             android:padding="5dp"
             android:text="(876) 397-7272"
             android:textColor="#33ACFF"
@@ -96,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="210dp"
+            android:layout_marginBottom="209dp"
             android:text="Email"
             android:textAlignment="center"
             android:textColor="#000"
@@ -119,6 +118,7 @@
             android:layout_height="43dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="81dp"
             app:srcCompat="@drawable/instalogo" />
 
     </RelativeLayout>

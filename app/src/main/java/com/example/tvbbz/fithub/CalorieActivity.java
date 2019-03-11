@@ -2,15 +2,20 @@ package com.example.tvbbz.fithub;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,17 +29,17 @@ public class CalorieActivity extends AppCompatActivity {
 
 
     private EditText height,weight,gen, age;
-    private int genint;
-    private String showresult;
 
     private int finalvalue1;
     private int finalweight;
     private int finalage;
+    private String finalgen;
     private int calorie ;
 
+    private CheckBox lose, maintain,gain;
 
     private Button calculate;
-    private TextView result;
+    private TextView result,carbs,protein,fats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,40 +100,154 @@ public class CalorieActivity extends AppCompatActivity {
         });
 
 
-
-
+        result = (TextView) findViewById(R.id.calorieresult);
+        height = (EditText) findViewById(R.id.heightcalorie);
+        weight = (EditText) findViewById(R.id.weightcalorie);
+        age = (EditText) findViewById(R.id.calage);
+        gen = (EditText) findViewById(R.id.gendersel);
+        lose = (CheckBox) findViewById(R.id.lose);
+        maintain = (CheckBox) findViewById(R.id.maintain);
+        gain = (CheckBox) findViewById(R.id.gain);
+        carbs = (TextView) findViewById(R.id.carbs);
+        protein = (TextView) findViewById(R.id.protein);
+        fats = (TextView) findViewById(R.id.fats);
 
         calculate = (Button) findViewById(R.id.calccal);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showresult = caloriecalculate();
-                result.setText(showresult);
+
+
+
+                if (weight.getText().toString().trim().length() != 0 && height.getText().toString().trim().length() != 0 && age.getText().toString().trim().length() != 0) {
+
+                    finalvalue1 = Integer.parseInt(String.valueOf(height.getText()));
+                    finalweight = Integer.parseInt(String.valueOf(weight.getText()));
+                    finalage = Integer.parseInt(String.valueOf(age.getText()));
+                    finalgen = gen.getText().toString();
+
+                    if (finalgen.length() == 6) {
+
+
+                        if (lose.isChecked()) {
+                            calorie = (int) (((finalweight * 4.35) + (finalvalue1 * 4.7) - (finalage * 4.7)) + 655 - 300);
+                            String value = "Calories Recommended: " + (calorie);
+                            result.setText(value);
+
+                            //Protein Calculation
+                            int proteinvalue = ((calorie / 100) * 40) / 4;
+                            protein.setText("Protein: " + proteinvalue + "g");
+
+                            //Carb Calculation
+                            int carbvalue = ((calorie / 100) * 30) / 4;
+                            carbs.setText("Carbohydrates: " + carbvalue + "g");
+
+                            //Fat Calculation
+                            int fatvalue = ((calorie / 100) * 30) / 9;
+                            fats.setText("Fats: " + fatvalue + "g");
+
+                        } else if (maintain.isChecked()) {
+                            calorie = (int) (((finalweight * 4.35) + (finalvalue1 * 4.7) - (finalage * 4.7)) + 655);
+                            String value = "Calories Recommended: " + (calorie);
+                            result.setText(value);
+
+                            //Protein Calculation
+                            int proteinvalue = ((calorie / 100) * 30) / 4;
+                            protein.setText("Protein: " + proteinvalue + "g");
+
+                            //Carb Calculation
+                            int carbvalue = ((calorie / 100) * 40) / 4;
+                            carbs.setText("Carbohydrates: " + carbvalue + "g");
+
+                            //Fat Calculation
+                            int fatvalue = ((calorie / 100) * 30) / 9;
+                            fats.setText("Fats: " + fatvalue + "g");
+
+                        } else if (gain.isChecked()) {
+                            calorie = (int) (((finalweight * 4.35) + (finalvalue1 * 4.7) - (finalage * 4.7)) + 655 + 300);
+                            String value = "Calories Recommended: " + (calorie);
+                            result.setText(value);
+
+                            //Protein Calculation
+                            int proteinvalue = ((calorie / 100) * 30) / 4;
+                            protein.setText("Protein: " + proteinvalue + "g");
+
+                            //Carb Calculation
+                            int carbvalue = ((calorie / 100) * 50) / 4;
+                            carbs.setText("Carbohydrates: " + carbvalue + "g");
+
+                            //Fat Calculation
+                            int fatvalue = ((calorie / 100) * 20) / 9;
+                            fats.setText("Fats: " + fatvalue + "g");
+
+                        }
+
+                    } else if (finalgen.length() == 4) {
+                        if (lose.isChecked()) {
+                            calorie = (int) (((finalweight * 6.23) + (finalvalue1 * 12.7) - (finalage * 6.8)) + 66 - 300);
+                            String value = "Calories Recommended: " + (calorie);
+                            result.setText(value);
+
+                            //Protein Calculation
+                            int proteinvalue = ((calorie / 100) * 50) / 4;
+                            protein.setText("Protein: " + proteinvalue + "g");
+
+                            //Carb Calculation
+                            int carbvalue = ((calorie / 100) * 30) / 4;
+                            carbs.setText("Carbohydrates: " + carbvalue + "g");
+
+                            //Fat Calculation
+                            int fatvalue = ((calorie / 100) * 20) / 9;
+                            fats.setText("Fats: " + fatvalue + "g");
+
+                        } else if (maintain.isChecked()) {
+                            calorie = (int) (((finalweight * 6.23) + (finalvalue1 * 12.7) - (finalage * 6.8)) + 66);
+                            String value = "Calories Recommended: " + (calorie);
+                            result.setText(value);
+
+                            //Protein Calculation
+                            int proteinvalue = ((calorie / 100) * 40) / 4;
+                            protein.setText("Protein: " + proteinvalue + "g");
+
+                            //Carb Calculation
+                            int carbvalue = ((calorie / 100) * 40) / 4;
+                            carbs.setText("Carbohydrates: " + carbvalue + "g");
+
+                            //Fat Calculation
+                            int fatvalue = ((calorie / 100) * 20) / 9;
+                            fats.setText("Fats: " + fatvalue + "g");
+
+                        } else if (gain.isChecked()) {
+                            calorie = (int) (((finalweight * 6.23) + (finalvalue1 * 12.7) - (finalage * 6.8)) + 66 + 300);
+                            String value = "Calories Recommended: " + (calorie);
+                            result.setText(value);
+
+                            //Protein Calculation
+                            int proteinvalue = ((calorie / 100) * 35) / 4;
+                            protein.setText("Protein: " + proteinvalue + "g");
+
+                            //Carb Calculation
+                            int carbvalue = ((calorie / 100) * 50) / 4;
+                            carbs.setText("Carbohydrates: " + carbvalue + "g");
+
+                            //Fat Calculation
+                            int fatvalue = ((calorie / 100) * 15) / 9;
+                            fats.setText("Fats: " + fatvalue + "g");
+
+                        }
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Enter Correct Gender", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(),"Enter Values in All Fields", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
 
 
-    }
-
-    private String caloriecalculate() {
-
-        String output;
-
-        height = (EditText) findViewById(R.id.heightcalorie);
-        weight = (EditText) findViewById(R.id.weightcalorie);
-        gen = (EditText) findViewById(R.id.gendersel);
-        genint = gen.getText().toString().length();
-        age = (EditText) findViewById(R.id.calage);
-
-
-        finalvalue1 = Integer.parseInt(height.getText().toString());
-
-
-          //  calorie = (int) (((finalweight *4.35)+(finalvalue1*4.7)-(finalage*4.7))+655);
-
-        output = "Calories: "+finalvalue1;
-        return output;
     }
 
 

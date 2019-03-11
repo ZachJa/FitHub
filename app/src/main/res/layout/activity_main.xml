@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:id="@+id/drawerLayout"
-    android:background="@drawable/contactbk"
+    android:background="@drawable/texture"
    >
 
 

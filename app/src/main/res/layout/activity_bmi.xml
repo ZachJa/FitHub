@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/contactbk"
     android:id="@+id/drawerLayout">
 
     <RelativeLayout
@@ -78,11 +77,12 @@
             android:id="@+id/bmibutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/weightinput"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="197dp"
             android:background="#0000ffff"
             android:text="Calculate"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -94,12 +94,11 @@
 
         <TextView
             android:id="@+id/bmiresult"
-            android:layout_width="210dp"
-            android:layout_height="43dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="109dp"
-            android:background="#fff"
+            android:layout_marginBottom="143dp"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="18dp"

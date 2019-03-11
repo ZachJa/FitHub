@@ -6,20 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalorieActivity"
+    android:background="#fff"
     android:id="@+id/drawerLayout">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/weightcalorie"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
             android:ems="10"
             android:hint="Weight (lbs)"
             android:inputType="textPersonName"
@@ -33,11 +33,10 @@
         <EditText
             android:id="@+id/heightcalorie"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="149dp"
             android:ems="10"
             android:hint="Height (in)"
             android:inputType="textPersonName"
@@ -50,30 +49,30 @@
         <Button
             android:id="@+id/calccal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="121dp"
+            android:background="#0000ffff"
             android:text="Calculate"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.747" />
+            app:layout_constraintVertical_bias="0.89" />
 
         <EditText
             android:id="@+id/gendersel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="218dp"
             android:ems="10"
+            android:hint="Gender (male/female)"
             android:inputType="textPersonName"
-            android:hint="Gender (M/F)"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,21 +83,24 @@
             android:id="@+id/calorieresult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="75dp"
+            android:background="#fff"
+            android:textColor="#000"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.802"
-            tools:layout_editor_absoluteX="163dp" />
+            app:layout_constraintVertical_bias="0.962"
+            tools:layout_editor_absoluteX="165dp" />
 
         <EditText
             android:id="@+id/calage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="198dp"
             android:ems="10"
             android:hint="Age"
             android:inputType="textPersonName"
@@ -110,7 +112,81 @@
             app:layout_constraintVertical_bias="0.169" />
 
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Calculate how much food your need\nto be eating to your goal here!"
+            android:textAlignment="center"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView32"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="We recommend MyFitnessPal to keep track of what you eat daily matching the calories you receive here based on your body stats and goals!"
+            android:textAlignment="center"
+            android:textSize="12dp" />
+
+        <CheckBox
+            android:id="@+id/lose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/textView33"
+            android:layout_marginBottom="174dp"
+            android:text="Lose Fat" />
+
+        <CheckBox
+            android:id="@+id/maintain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/lose"
+            android:layout_toEndOf="@+id/lose"
+            android:text="Maintain" />
+
+        <CheckBox
+            android:id="@+id/gain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/lose"
+            android:layout_toEndOf="@+id/maintain"
+            android:text="Gain Weight" />
+
+        <TextView
+            android:id="@+id/carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calorieresult"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-75dp"
+             />
+
+        <TextView
+            android:id="@+id/protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carbs"
+            android:layout_centerHorizontal="true"
+             />
+
+        <TextView
+            android:id="@+id/fats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/protein"
+            android:layout_centerHorizontal="true"
+            />
+
+
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
