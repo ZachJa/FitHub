@@ -122,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
+
                 if(task.isSuccessful()){
 
                     if(StaffProvider.isStaffMember(email)){
@@ -138,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     task.getException();
                     Log.e("Error","Error",task.getException());
+                    mprogress.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
                 }
 

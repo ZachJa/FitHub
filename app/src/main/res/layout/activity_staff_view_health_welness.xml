@@ -52,7 +52,7 @@
         android:layout_height="match_parent"
         app:menu="@menu/staff_navigation_menu"
         android:layout_gravity="start"
-        app:itemIconTint="@color/colorPrimary"
+        app:itemIconTint="#000"
         app:headerLayout="@layout/navigation_header"
         android:id="@+id/navmenu">
     </android.support.design.widget.NavigationView>

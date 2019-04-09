@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText name, password, email,key;
+    private EditText password, email;
     private Button registerbutton;
     private TextView userlogin;
     private FirebaseAuth firebaseAuth;
@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getSupportActionBar().setTitle("Sign Up");
+        getSupportActionBar().setTitle("Register");
         setupUIviews();
 
 
@@ -73,7 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void setupUIviews(){
 
-        name = (EditText) findViewById(R.id.nameinput);
         password = (EditText) findViewById(R.id.passwordinput);
         email = (EditText) findViewById(R.id.emailinput);
         registerbutton = (Button) findViewById(R.id.signupbutton);
@@ -87,22 +86,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         Boolean result = false;
 
-        String namecheck = name.getText().toString();
+        //String namecheck = name.getText().toString();
         String passwordcheck = password.getText().toString();
         String emailcheck = email.getText().toString();
-        String keycheck = key.getText().toString().trim();
-        String Key = "Express";
 
 
-        if(namecheck.isEmpty() || passwordcheck.isEmpty() || emailcheck.isEmpty()){
+        if(passwordcheck.isEmpty() || emailcheck.isEmpty()){
 
             Toast.makeText(this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
         }
-       /*else if(keycheck != Key){
-
-            Toast.makeText(this, "Please Enter Valid Key", Toast.LENGTH_SHORT).show();
-
-        }*/else{
+       else{
             result = true;
         }
         return result;

@@ -252,12 +252,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-   /* //For Refresh Button
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.refresh_menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-    */
 }

@@ -1,9 +1,12 @@
 package com.example.tvbbz.fithub;
 
+import com.google.firebase.database.Exclude;
+
 public class Upload {
     private String mname;
     private String mdesc;
     private String mimageurl;
+    private String mkey;
 
 
     public Upload(){
@@ -47,5 +50,13 @@ public class Upload {
 
     public void setMimageurl(String mimageurl) {
         this.mimageurl = mimageurl;
+    }
+    @Exclude
+    public String getMkey() {
+        return mkey;
+    }
+    @Exclude
+    public void setMkey(String mkey) {
+        this.mkey = mkey;
     }
 }

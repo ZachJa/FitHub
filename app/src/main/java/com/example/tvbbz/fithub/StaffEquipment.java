@@ -13,11 +13,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,14 +31,16 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffEquipment extends AppCompatActivity {
+public class StaffEquipment extends AppCompatActivity implements ImageAdapter.OnItemClickListenerimage{
 
     private FloatingActionButton addequip;
 
     private RecyclerView mrecyclerview;
     private ImageAdapter imageAdapter;
 
+    private FirebaseStorage mstorage;
     private DatabaseReference mdatabaseref;
+    private ValueEventListener mdblistener;
     private List<Upload> muploads;
 
 
@@ -99,20 +103,27 @@ public class StaffEquipment extends AppCompatActivity {
         mrecyclerview.setHasFixedSize(true);
         mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
         muploads = new ArrayList<>();
+        imageAdapter = new ImageAdapter(StaffEquipment.this,muploads);
+        mrecyclerview.setAdapter(imageAdapter);
+        imageAdapter.setOnItemCLickListenerimage(StaffEquipment.this);
 
         mdatabaseref = FirebaseDatabase.getInstance().getReference("equipment");
+        mstorage = FirebaseStorage.getInstance();
 
-        mdatabaseref.addValueEventListener(new ValueEventListener() {
+        mdblistener = mdatabaseref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                muploads.clear();
+
                 for (DataSnapshot postsnapshot: dataSnapshot.getChildren()){
                     Upload upload = postsnapshot.getValue(Upload.class);
+                    upload.setMkey(postsnapshot.getKey());
                     muploads.add(upload);
                 }
 
-                imageAdapter = new ImageAdapter(StaffEquipment.this,muploads);
-                mrecyclerview.setAdapter(imageAdapter);
+                imageAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -142,5 +153,30 @@ public class StaffEquipment extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //For Delete
+    @Override
+    public void onItemClick(int position) {
 
+    }
+
+    @Override
+    public void onDeleteCLick(int position) {
+        Upload selitem = muploads.get(position);
+        final String selkey = selitem.getMkey();
+
+        StorageReference imageref  = mstorage.getReferenceFromUrl(selitem.getMimageurl());
+        imageref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                mdatabaseref.child(selkey).removeValue();
+                Toast.makeText(StaffEquipment.this, "Deleted", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mdatabaseref.removeEventListener(mdblistener);
+    }
 }
